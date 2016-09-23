@@ -7,10 +7,10 @@ app.use(morgan('combined'));
 
 var articles = {
     'article-one': {
-  title: 'Article One | Vidya',
-  heading: 'Article One',
-  date: 'Sept 23, 2016',
-  content: `<p> This is content of Article One. This is content of Article One. This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.
+       title: 'Article One | Vidya',
+       heading: 'Article One',
+       date: 'Sept 23, 2016',
+       content: `<p> This is content of Article One. This is content of Article One. This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.
             </p>
             <p> This is content of Article One. This is content of Article One. This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.This is content of Article One.
             </p>
@@ -60,7 +60,9 @@ function createTemplate(data) {
     var htmlTemplate = ` 
 <html>
     <head>
-        <title> ${title} </title>
+        <title>
+             ${title} 
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/ui/style.css" rel="stylesheet" />
         <style>
@@ -92,7 +94,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/:articleName', function (req, res) {
-    var articleName = req.param.articleName;
+    var articleName = req.params.articleName;
   res.send(createTemplate(articles[articleName]));
 });
 
